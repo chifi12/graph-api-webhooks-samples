@@ -23,7 +23,7 @@ var received_updates = [];
 
 app.get('/', function(req, res) {
   console.log(req);
-  res.send('<pre>' + JSON.stringify(received_updates, req.body) + '</pre>');
+  res.send('<pre>' + JSON.stringify(received_updates, req.body.changeFields) + '</pre>');
 });
 
 app.get(['/facebook', '/instagram'], function(req, res) {
