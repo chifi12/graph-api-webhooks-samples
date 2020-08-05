@@ -13,13 +13,6 @@ app.use(bodyParser.json());
 var token = process.env.TOKEN || 'token';
 var received_updates = [];
 
-app.get('/', function(req, res) {
-  console.log(req.body);
-  console.log(req);
-  console.log(JSON.stringify(received_updates, req.body));
-   res.send('<pre>' + JSON.stringify(received_updates, req.body , 2) + '</pre>');
-});
-
 app.get(['/facebook', '/instagram'], function(req, res) {
    if (
     req.query['hub.mode'] == 'subscribe' &&
