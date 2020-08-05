@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
   console.log(req.body);
   console.log(req);
   console.log(JSON.stringify(received_updates, req.body));
-   res.send('<pre>' + JSON.stringify(received_updates, req , 2) + '</pre>');
+   res.send('<pre>' + JSON.stringify(received_updates, req.body , 2) + '</pre>');
 });
 
 app.get(['/facebook', '/instagram'], function(req, res) {
@@ -31,13 +31,12 @@ app.get(['/facebook', '/instagram'], function(req, res) {
    }
 });
 
-// app.post('/instagram', function(req, res) {
-//   console.log('Instagram request body:');
-//   console.log(req.body);
-  
-//   // Process the Instagram updates here
-//   received_updates.unshift(req.body);
-//   res.send('<pre>' + JSON.stringify(received_updates, req , 2) + '</pre>');
-// });
+app.post('/instagram', function(req, res) {
+  console.log('Instagram request body:');
+  console.log(req.body);
+// Process the Instagram updates here
+   received_updates.unshift(req.body);
+   res.send('<pre>' + JSON.stringify(received_updates, req , 2) + '</pre>');
+});
 
 app.listen();
