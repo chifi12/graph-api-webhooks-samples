@@ -13,8 +13,7 @@ var xhub = require('express-x-hub');
 
 app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'));
-
-process.env.APP_SECRET = "904591740040148";
+process.env.APP_SECRET = "";
 app.use(xhub({ algorithm: 'sha1', secret: process.env.APP_SECRET }));
 app.use(bodyParser.json());
 
@@ -22,8 +21,10 @@ var token = process.env.TOKEN || 'token';
 var received_updates = [];
 
 app.get('/', function(req, res) {
+  console.log(req.body);
   console.log(req);
-  res.send('<pre>' + JSON.stringify(received_updates, req.body.changeFields) + '</pre>');
+  console.log(JSON.stringify(received_updates, req.body));
+  res.send('<pre>' + JSON.stringify(received_updates, req , 2) + '</pre>');
 });
 
 app.get(['/facebook', '/instagram'], function(req, res) {
